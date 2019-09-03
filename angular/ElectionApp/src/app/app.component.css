@@ -1,0 +1,22 @@
+a {
+    margin-right: 16px;
+    margin-left: 4px;
+    padding: 4px;
+    background-color: khaki;
+    text-decoration: none;
+}
+
+a:visited, a:link {
+    color: maroon;
+}
+
+a.active {
+    background-color: maroon;
+    color: khaki;
+}
+
+.outlet {
+    background-color: lightgray;
+    margin: 4px;
+    padding: 4px;
+}
