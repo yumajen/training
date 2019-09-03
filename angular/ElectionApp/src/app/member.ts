@@ -1,7 +1,7 @@
 export class Member {
     id: number;
     name: string;
-    prof: string
+    prof: string;
 
     static members: Member[] = [
         { id: 1, name: 'Samidare', prof: 'My name is "Samidare". Nice to meet you.' },
