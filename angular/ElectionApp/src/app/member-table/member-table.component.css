@@ -7,3 +7,18 @@
     background-color: beige;
     color: black;
 }
+
+.name-selected {
+    background-color: maroon;
+    color: beige;
+}
+
+.prof-selected {
+    background-color: khaki;
+    color: maroon;
+}
+
+.error {
+    background-color: red;
+    color: white;
+}
