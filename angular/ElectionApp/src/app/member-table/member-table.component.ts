@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../member';
+import { MembersService } from '../members.service'
 
 @Component({
   selector: 'app-member-table',
@@ -11,18 +12,27 @@ export class MemberTableComponent implements OnInit {
   isOverflow: boolean;
   whoseSelected: string;
 
-  constructor() {
+  constructor(
+    private mservice: MembersService
+  ) {
     this.selectedMembers = new Array();
     this.isOverflow = false;
     this.whoseSelected = '';
   }
 
   ngOnInit() {
+    this.getMembers();
   }
-  members = Member.members;
+  members: Member[];
   selectedMembers: Member[];
 
-  onSelect(member: Member) {
+  getMembers(): void {
+    this.mservice.getMembers().then(
+      members => this.members = members
+    );
+  }
+
+  onSelect(member: Member): void {
     let selectedIndex = this.getSelectedMemberIndex(member);
 
     if (selectedIndex >= 0) {
@@ -46,7 +56,7 @@ export class MemberTableComponent implements OnInit {
     return -1;
   }
 
-  showSelectedMembers() {
+  showSelectedMembers(): string {
     let selectedMembersList = '';
 
     for (let member of this.selectedMembers) {
