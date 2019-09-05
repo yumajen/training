@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MemberTableComponent } from './member-table/member-table.component';
 import { PollComponent } from './poll/poll.component';
+import { MembersService } from './members.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { PollComponent } from './poll/poll.component';
       ]
     )
   ],
-  providers: [],
+  providers: [MembersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
