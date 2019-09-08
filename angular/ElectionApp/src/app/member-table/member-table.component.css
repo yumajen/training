@@ -34,4 +34,19 @@
 
 .vote:hover {
     opacity: 0.7;
+    cursor: pointer;
+}
+
+.edit-prof {
+    background-color: green;
+    color: whitesmoke;
+}
+
+.edit-prof:hover {
+    cursor: pointer;
+}
+
+.now-editing {
+    background-color: orange;
+    color: whitesmoke;
 }
