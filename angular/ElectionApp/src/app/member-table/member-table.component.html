@@ -1,4 +1,7 @@
 <h2>被選挙人名簿</h2>
+<div *ngIf="selectedMembers.length == 4">
+    <button class="vote" (click)="vote()">投票する</button>
+</div>
 <table>
     <tr *ngFor="let member of members" (click)="onSelect(member)">
         <td class="name" [class.name-selected]="getSelectedMemberIndex(member)>=0"><b>{{member.name}}</b></td>

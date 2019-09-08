@@ -65,4 +65,16 @@ export class MemberTableComponent implements OnInit {
 
     return selectedMembersList.substr(0, selectedMembersList.length - 2) + 'が選ばれました。';
   }
+
+  vote(): void {
+    for (let member of this.selectedMembers) {
+      member.voted++;
+    }
+
+    this.mservice.addVotes(this.selectedMembers)
+      .then((response) => {
+        this.whoseSelected = response;
+        this.selectedMembers = [];
+      });
+  }
 }
