@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../member';
-import { MembersService } from '../members.service'
+import { MembersService } from '../members.service';
 
 @Component({
   selector: 'app-member-table',
@@ -11,6 +11,9 @@ export class MemberTableComponent implements OnInit {
 
   isOverflow: boolean;
   whoseSelected: string;
+  members: Member[];
+  selectedMembers: Member[];
+  editingMember: Member;
 
   constructor(
     private mservice: MembersService
@@ -18,13 +21,12 @@ export class MemberTableComponent implements OnInit {
     this.selectedMembers = new Array();
     this.isOverflow = false;
     this.whoseSelected = '';
+
   }
 
   ngOnInit() {
     this.getMembers();
   }
-  members: Member[];
-  selectedMembers: Member[];
 
   getMembers(): void {
     this.mservice.getMembers().then(
@@ -63,7 +65,7 @@ export class MemberTableComponent implements OnInit {
       selectedMembersList += member.name + 'さん, ';
     }
 
-    return selectedMembersList.substr(0, selectedMembersList.length - 2) + 'が選ばれました。';
+    return selectedMembersList.substr(0, selectedMembersList.length - 2);
   }
 
   vote(): void {
@@ -76,5 +78,22 @@ export class MemberTableComponent implements OnInit {
         this.whoseSelected = response;
         this.selectedMembers = [];
       });
+  }
+
+  editProfile(member: Member): void {
+    this.editingMember = member;
+  }
+
+  isEditing(member: Member): boolean {
+    return this.editingMember == member;
+  }
+
+  cancelEditing(): void {
+    this.editingMember = null;
+  }
+
+  updateProfile(): void {
+    this.mservice.updateMember(this.editingMember)
+      .then(() => this.editingMember = null);
   }
 }
