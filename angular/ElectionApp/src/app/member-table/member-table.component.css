@@ -34,7 +34,6 @@
 
 .vote:hover {
     opacity: 0.7;
-    cursor: pointer;
 }
 
 .edit-prof {
@@ -49,4 +48,14 @@
 .now-editing {
     background-color: orange;
     color: whitesmoke;
+}
+
+input {
+    width: 500px;
+    height: 20px;
+}
+
+button {
+    margin-left: 10px;
+    cursor: pointer;
 }

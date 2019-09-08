@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../member';
-import { MembersService } from '../members.service'
+import { MembersService } from '../members.service';
 
 @Component({
   selector: 'app-member-table',
@@ -65,7 +65,7 @@ export class MemberTableComponent implements OnInit {
       selectedMembersList += member.name + 'さん, ';
     }
 
-    return selectedMembersList.substr(0, selectedMembersList.length - 2) + 'が選ばれました。';
+    return selectedMembersList.substr(0, selectedMembersList.length - 2);
   }
 
   vote(): void {
@@ -86,5 +86,14 @@ export class MemberTableComponent implements OnInit {
 
   isEditing(member: Member): boolean {
     return this.editingMember == member;
+  }
+
+  cancelEditing(): void {
+    this.editingMember = null;
+  }
+
+  updateProfile(): void {
+    this.mservice.updateMember(this.editingMember)
+      .then(() => this.editingMember = null);
   }
 }

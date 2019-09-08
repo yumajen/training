@@ -8,6 +8,7 @@ import { MembersService } from './members.service';
 import { InMemoryMemberdataService } from './in-memory-memberdata.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     InMemoryWebApiModule.forRoot(
       InMemoryMemberdataService
-    )
+    ),
+    FormsModule
   ],
   providers: [MembersService],
   bootstrap: [AppComponent]

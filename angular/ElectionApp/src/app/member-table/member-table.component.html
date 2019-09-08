@@ -23,4 +23,11 @@
     </tr>
 </table>
 <div *ngIf="isOverflow" class="error">選択は最大4名までです</div>
-<div>{{whoseSelected}}</div>
+<div *ngIf="whoseSelected.length>0">{{whoseSelected}}が選ばれました。</div>
+<hr>
+<div *ngIf="editingMember != null">
+    <p>{{editingMember.name}}さんのプロフィールを変更</p>
+    <input [(ngModel)]="editingMember.prof">
+    <button (click)="cancelEditing()">中止</button>
+    <button (click)="updateProfile()">変更</button>
+</div>
